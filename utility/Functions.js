@@ -77,21 +77,8 @@ function logOptions(num) {
   }
 }
 
-function backToOptions(num) {
-  if (num === "0") {
-    logOptions;
-  }
-}
-
 function displayTime() {
   log(chalk.bold("Task Tracker CLI App", "|||", "Time:", date));
 }
 
-export {
-  checkFile,
-  taskStatus,
-  homeOptions,
-  backToOptions,
-  logOptions,
-  displayTime,
-};
+export { checkFile, taskStatus, homeOptions, logOptions, displayTime };
