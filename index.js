@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
 import clear from "clear";
-import fs from "fs/promises";
-import figlet from "figlet";
 
 import {
   checkFile,
@@ -19,9 +16,6 @@ import {
   rl,
   log,
 } from "./utility/Functions.js";
-import { scriptStructure } from "./utility/Structure.js";
-
-const TASKS_FILE = scriptStructure.filePath;
 
 // Main menu function
 async function showMenu() {
