@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "CLI App to track your tasks",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "type": "module",
-  "author": "",
+  "author": "abo3bazez",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.4.1",
@@ -15,5 +12,8 @@
     "date-fns": "^4.1.0",
     "figlet": "^1.8.1",
     "prompt-sync": "^4.2.0"
+  },
+  "bin": {
+    "task-tracker": "./index.js"
   }
 }
