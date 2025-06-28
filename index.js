@@ -1,45 +1,68 @@
 #!/usr/bin/env node
 
 import chalk from "chalk";
-import Readline from "readline/promises";
 import clear from "clear";
 
-import { stdin as input, stdout as output } from "process";
+import { scriptStructure } from "./utility/Structure.js";
 
 import {
   checkFile,
-  taskStatus,
-  backToOptions,
-  logOptions,
-  homeOptions,
   displayTime,
+  showBanner,
+  showTaskCounters,
+  inProgressTask,
+  pauseAndReturn,
+  finishTask,
+  deleteTask,
+  viewTasks,
+  rl,
+  log,
+  addTask,
 } from "./utility/Functions.js";
 
-const log = console.log;
+const TASKS_FILE = scriptStructure.filePath;
 
-const rl = Readline.createInterface({ input, output });
-
-checkFile();
-
-let timeOutID = setTimeout(() => {
+// Main Menu
+async function showMenu() {
   clear();
   displayTime();
-  log(chalk.bgWhite.bold("Task Status"));
-  taskStatus();
-  clearTimeout(timeOutID);
+  await showTaskCounters();
   log(chalk.bgWhite.bold("Options"));
-  homeOptions();
-}, 1000);
+  log(chalk.bold("1 - View Tasks"));
+  log(chalk.bold("2 - Add Task"));
+  log(chalk.bold("3 - Delete Task"));
+  log(chalk.bold("4 - Set Task to Finished"));
+  log(chalk.bold("5 - Set Task to InProgress"));
+  log(chalk.bold("6 - Exit"));
 
-rl.on("line", (input) => {
-  if (input === "1") {
-    clear();
-    displayTime();
-    logOptions("1");
+  const choice = await rl.question("Choose an option: ");
+  switch (choice.trim()) {
+    case "1":
+      await viewTasks();
+      break;
+    case "2":
+      await addTask();
+      break;
+    case "3":
+      await deleteTask();
+      break;
+    case "4":
+      await finishTask();
+      break;
+    case "5":
+      await inProgressTask();
+      break;
+    case "6":
+      log(chalk.green("Goodbye!"));
+      rl.close();
+      return;
+    default:
+      log(chalk.red("Invalid choice."));
+      await pauseAndReturn();
   }
-  if (input === "2") {
-    clear();
-    displayTime();
-    logOptions("2");
-  }
-});
+  await showMenu();
+}
+
+await showBanner();
+await checkFile();
+await showMenu();
