@@ -24,7 +24,6 @@ A simple and interactive command-line application to help you track your tasks.
 - **Task Status Counters:**  
   Instantly see counters for Total, Finished, InProgress, and UnFinished tasks in the main menu.
 
-
 - **Easy Navigation:**  
   Simple menu-driven interface with clear options and prompts.
 
@@ -70,3 +69,11 @@ A simple and interactive command-line application to help you track your tasks.
 ## License
 
 ISC
+
+---
+
+## Project Source
+
+This project is based on the [Task Tracker project from roadmap.sh](https://roadmap.sh/projects/task-tracker).
+
+---
